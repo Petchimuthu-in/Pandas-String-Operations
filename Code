@@ -1,0 +1,27 @@
+import pandas as pd
+df = pd.read_csv("student_string_data.csv")
+print("Original Dataset:")
+print(df)
+
+print("\nNames in Uppercase:")
+print(df["Name"].str.upper())
+
+print("\nCourses in Lowercase:")
+print(df["Course"].str.lower())
+
+df["City"] = df["City"].str.strip()
+
+print("\nCity Names After Removing Extra Spaces:")
+print(df["City"])
+
+print("\nStudents from Chennai:")
+print(df[df["City"].str.contains("Chennai", case=False)])
+
+df["Course"] = df["Course"].str.replace(
+    "Python",
+    "Python Programming",
+    regex=False
+)
+
+print("\nDataset After Replacing Course Name:")
+print(df)
